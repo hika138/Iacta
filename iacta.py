@@ -9,8 +9,8 @@ import dotenv
 dotenv_path = join(dirname(__file__), '.env')
 dotenv.load_dotenv(dotenv_path)
 
-server_id = int(os.getenv("SERVER_ID"))
-token = os.getenv("TOKEN")
+server_id:int = int(str(os.getenv("SERVER_ID")))
+token:str = str(os.getenv("TOKEN"))
 
 #botのintentの取得
 intent = discord.Intents.default()
