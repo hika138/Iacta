@@ -44,9 +44,8 @@ async def roll(ctx: discord.Interaction, formula:str):
     for i in range(len(expression_1)):
         temp = expression_1[i].split('-')
         for j in range(len(temp)):
-            if j != 0:
-                temp[j] = '-'+temp[j]
-                print(temp[j])
+            temp[j] = '-'+temp[j]
+            print(temp[j])
             expression_2.append(temp[j])
     terms = []
     #全ての項をDで分割する
