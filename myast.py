@@ -108,8 +108,8 @@ class Tokenizer:
 
 # 構文解析器
 class Parser:
-    def __init__(self, tokens: list[Token]):
-        self.tokens: list[Token] = tokens
+    def __init__(self, tokens: list):
+        self.tokens: list = tokens
         self.pos: int = 0
         self.current_token: Token = self.tokens[self.pos]
         
