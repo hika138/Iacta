@@ -3,6 +3,7 @@ from discord.ext import commands
 import os
 from os.path import join, dirname
 import dotenv
+import modules.myast as myast
 
 dotenv_path = join(dirname(__file__), '.env')
 dotenv.load_dotenv(dotenv_path)
