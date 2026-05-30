@@ -77,7 +77,7 @@ class Tokenizer:
         self.current_char: str = self.text[self.pos] if self.text else None
         self.token_specification = [
             (T_NUM,      r'\d+(\.\d*)?'),   # Integer or decimal number
-            (T_OP,       r'[+\-*/d]'),      # Arithmetic operators
+            (T_OP,       r'[+\-*/dD×÷]'),      # Arithmetic operators
             (T_LPAREN,   r'\('),             # Left Parenthesis
             (T_RPAREN,   r'\)'),             # Right Parenthesis
             (T_SKIP,     r'[ \s]+'),         # Skip over spaces and tabs
