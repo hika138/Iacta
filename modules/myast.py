@@ -32,11 +32,11 @@ class BinOp(Node):
             return left + right
         elif self.op == '-':
             return left - right
-        elif self.op == '*':
+        elif self.op == '*' or self.op == '×':
             return left * right
-        elif self.op == '/':
+        elif self.op == '/' or self.op == '÷':
             return left / right
-        elif self.op == 'd':
+        elif self.op == 'd' or self.op == 'D':
             total = 0
             for _ in range(int(left)):
                 total += random.randint(1, int(right))
@@ -77,7 +77,7 @@ class Tokenizer:
         self.current_char: str = self.text[self.pos] if self.text else None
         self.token_specification = [
             (T_NUM,      r'\d+(\.\d*)?'),   # Integer or decimal number
-            (T_OP,       r'[+\-*/d]'),      # Arithmetic operators
+            (T_OP,       r'[+\-*/dD×÷]'),      # Arithmetic operators
             (T_LPAREN,   r'\('),             # Left Parenthesis
             (T_RPAREN,   r'\)'),             # Right Parenthesis
             (T_SKIP,     r'[ \s]+'),         # Skip over spaces and tabs
@@ -147,7 +147,7 @@ class Parser:
 
     def _term(self) -> Node:
         node = self._factor()
-        while self.current_token.type == T_OP and self.current_token.value in ('*', '/', 'd'):
+        while self.current_token.type == T_OP and self.current_token.value in ('*', '×', '/', '÷', 'd', 'D'):
             token = self.current_token
             self._eat(T_OP)
             node = BinOp(left_child=node, op=token.value, right_child=self._factor())
